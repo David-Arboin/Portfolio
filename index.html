@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio de David Arboin</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="./ressources/logo_1.gif" type="image/icon type">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script type="text/javascript">
+            (function() {
+                // https://dashboard.emailjs.com/admin/account
+                emailjs.init('hrJzqlebiPhHlbcWf');
+            })();
+        </script>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById('contact-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    // generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                    // these IDs from the previous steps
+                    console.log(this)
+                    emailjs.sendForm('gmail', 'template_9ofjiz3', this)
+                        .then(function() {
+                            console.log('SUCCESS!');
+                            document.getElementById('contact-form').reset()
+                        }, function(error) {
+                            console.log('FAILED...', error);
+                        });
+                });
+            }
+        </script>
+    </head>
+    <body oncontextmenu="return false;">
+        <div class="container-nav">
+            <div class="nav">
+                <a href="#presentation" class="presentation">À propos</a>
+                <a href="#projects" class="projects">Projets</a>
+                <a href="#contact" class="contact">Contact</a>
+            </div>
+        </div>
+        <div class="display-backgrounds">
+            <div id="home" class="background-image image-background-home">
+                <div class="name-and-subtitle">
+                    <div class="display-name">
+                        <div class="line-left"></div>
+                        <div class="name">David Arboin</div>
+                        <div class="line-right"></div>
+                    </div>
+                    <div class="display-subtitle">
+                        <div class="subtitle">Développeur web motivé</div>
+                    </div>
+                </div>
+            <div class="marker-image1"></div>
+
+            </div>
+            <div id="presentation"class="background-image image-background-presentation">
+                <div class="photo-and-text">
+                    <div class="display-photo">
+                        <img
+                            src="./ressources/Photo-de-Profil.gif"
+                            alt="Photo de profil de David Arboin Développeur web"
+                        />
+                    </div>
+                    <div class="display-text">
+                        <h1 className="text">
+                            Je suis David Arboin et réside dans le Lot et
+                            Garonne;
+                        </h1>
+                        <h1 className="text">
+                            Développeur web issu de l'école Openclassrooms;
+                        </h1>
+                        <h1 className="text">
+                            Je suis à la recherche de tous types de projets;
+                        </h1>
+                        <h1 className="text">
+                            J'adore construire des interfaces interactives;
+                        </h1>
+                        <h1 className="text">
+                            Je suis disponible pour un entretien;
+                        </h1>
+                        <h1 className="text">Ou étudier un projet;</h1>
+                        <h1 className="text">
+                            Je suis particulièrement soucieux de l'adaptabilité
+                            aux personnes en situation de handicap;
+                        </h1>
+                        <h1 className="text">
+                            Éternel apprenant et fanatique de nouvelles
+                            technologies,
+                            <br />
+                            Je suis aussi guitariste;
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projects" class="background-image image-background-projects">
+                <div class="display-arrow">
+                    <div class="arrow-left"><</div>
+                    <div class="arrow-right">></div>
+                </div>
+                <div id="test" class="display-projects">
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact" class="background-image image-background-contact">
+                <div class="container-form-contact">
+                    
+                      <form id="contact-form" class="display-form">
+                        <input type="hidden" name="contact_number">
+                          <label for="name">Nom</label>
+                          <input type="text" name="name" id="name" required>
+
+                          <label for="email">Email</label>
+                          <input type="email" name="email" id="email" required>
+
+                          <label for="message">Message</label>
+                          <textarea type="text" name="message" id="message" required></textarea>
+                            
+                          <div class="display-input-submit">
+                                <input type="submit" value="Envoyer">
+                          </div>
+
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="module" src="app.js"></script>
+    </body>
+</html>

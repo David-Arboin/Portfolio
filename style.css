@@ -1,0 +1,354 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: sans-serif;
+    min-height: 100vh;
+    height: auto;
+    overflow-x: hidden;
+}
+@font-face {
+    font-family: 'caviar_dreams';
+    src: url('./fonts/caviar_dreams/CaviarDreams.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'dream_orphans';
+    src: url('./fonts/dream_orphans/dream\ orphans.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+.display-backgrounds {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-nav {
+    position: fixed;
+    top: 2%;
+    right: 0;
+    width: 45%;
+    height: 4%;
+    background: linear-gradient(
+        to top,
+        transparent 20%,
+        black 20%,
+        black 60%,
+        transparent 60%
+    );
+    color: white;
+    font-size: 2.5vw;
+    font-family: 'caviar_dreams';
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    animation: slideFromLeft 2s ease-out;
+}
+.nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+a {
+    caret-color: transparent;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+            supported by Chrome, Edge, Opera and Firefox */
+}
+.background-image {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+.image-background-home {
+    background-image: url('ressources/home.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.name-and-subtitle {
+    width: 100%;
+    height: 30%;
+}
+.display-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: serif;
+    caret-color: transparent;
+    animation: slideFromRight 2s ease-out;
+}
+@keyframes slideFromRight {
+    from {
+        transform: translateX(-300vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+.line-left {
+    width: 20%;
+    border: 1px solid white;
+}
+.name {
+    color: white;
+    transform: scaleY(2);
+    font-family: dream_orphans;
+    font-size: 10vw;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+            supported by Chrome, Edge, Opera and Firefox */
+}
+.line-right {
+    width: 20%;
+    border: 1px solid white;
+}
+.display-subtitle {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    caret-color: transparent;
+    animation: slideFromLeft 2s ease-out;
+}
+@keyframes slideFromLeft {
+    from {
+        transform: translateX(300vw);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+.subtitle {
+    width: 50%;
+    transform: translateY(100%);
+    background: linear-gradient(
+        to top,
+        transparent 20%,
+        black 20%,
+        black 60%,
+        transparent 60%
+    );
+    color: white;
+    font-size: 37px;
+    font-family: 'caviar_dreams';
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+            supported by Chrome, Edge, Opera and Firefox */
+}
+.image-background-presentation {
+    background-image: url('ressources/presentation.jpg');
+}
+.photo-and-text {
+    width: 65%;
+    margin-left: 2.5%;
+}
+.display-photo {
+    width: 30%;
+}
+img {
+    width: 100%;
+    caret-color: transparent;
+}
+.display-text {
+    color: white;
+    font-size: 12px;
+    font-family: 'caviar_dreams';
+    line-height: 4vh;
+}
+.display-photo,
+.display-text {
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+.display-photo.not-visible,
+.display-text.not-visible {
+    transform: translateX(50px);
+    opacity: 0;
+}
+
+h1, label {
+    caret-color: transparent;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+            supported by Chrome, Edge, Opera and Firefox */
+}
+.image-background-projects {
+    background-image: url('ressources/projects.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.display-arrow {
+    width: 63%;
+    z-index: 2;
+    height: 5%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.arrow-left {
+    width: 7.5%;
+    aspect-ratio: 1;
+    border: 2px solid black;
+    border-radius: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    cursor: pointer;
+    caret-color: transparent;
+}
+.arrow-left:hover,
+.arrow-right:hover{
+color: white;
+border: 2px solid rgb(255, 255, 255);
+
+}
+.arrow-right {
+    width: 7.5%;
+    aspect-ratio: 1;
+    border: 2px solid black;
+    border-radius: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vw;
+    cursor: pointer;
+    caret-color: transparent;
+    outline: none;
+}
+.display-projects {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.display-project-0 {
+    width: 30%;
+    aspect-ratio: 1/0.4;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    caret-color: transparent;
+}
+.display-project-1 {
+    width: 60%;
+    aspect-ratio: 1/0.4;
+    display: flex;
+    align-items: center;
+    margin: 0 5% 0 5%;
+    caret-color: transparent;
+}
+.display-project-1:hover {
+    transform: scale(1.1);
+}
+.display-project-2 {
+    width: 30%;
+    aspect-ratio: 1/0.4;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    caret-color: transparent;
+}
+.display-image-project {
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-background-contact {
+    background-image: url('ressources/contact.jpg');
+    display: flex;
+}
+.container-form-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.display-form {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+.display-form label {
+    margin-left: 10px;
+    font-family: 'caviar_dreams';
+    color: white;
+    font-size: 3vw;
+    margin-top: 2vw;
+}
+.display-form input[type='text'],
+.display-form input[type='email'] {
+    border-radius: 2vw;
+    opacity: 0.8;
+    border: 2px solid rgb(203, 203, 203);
+    height: 3vh;
+    padding-left: 1vw;
+    font-family: serif;
+    font-size: 1.5vw;
+    caret-color: transparent;
+
+}
+.display-form textarea {
+    height: 15vh;
+    border-radius: 2vw;
+    opacity: 0.8;
+    border: 2px solid rgb(203, 203, 203);
+    padding: 0.5vw 0 0 1vw;
+    font-family: serif;
+    font-size: 1.5vw;
+    caret-color: transparent;
+
+}
+.display-input-submit {
+    width: 98%;
+    text-align: right;
+    margin-top: 2vh;
+}
+.display-input-submit input[type='submit'] {
+    width: 20%;
+    font-family: 'caviar_dreams';
+    color: black;
+    font-size: 3vw;
+    padding: 0.5%;
+    border-radius: 0.2vw;
+    border: 2px solid rgb(203, 203, 203);
+}
+.display-input-submit input[type='submit']:hover {
+    background: rgb(213, 213, 213);
+    cursor: pointer;
+}
+.display-input-submit input[type='submit']:active {
+    background: rgb(67, 67, 67);
+    cursor: pointer;
+}
