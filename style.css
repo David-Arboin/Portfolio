@@ -177,6 +177,10 @@ img {
     font-family: 'caviar_dreams';
     line-height: 4vh;
 }
+.display-text h1 span{
+    opacity: 0;
+}
+
 .display-photo,
 .display-text {
     transform: translateX(0);
@@ -190,7 +194,8 @@ img {
     opacity: 0;
 }
 
-h1, label {
+h1,
+label {
     caret-color: transparent;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -228,10 +233,9 @@ h1, label {
     caret-color: transparent;
 }
 .arrow-left:hover,
-.arrow-right:hover{
-color: white;
-border: 2px solid rgb(255, 255, 255);
-
+.arrow-right:hover {
+    color: white;
+    border: 2px solid rgb(255, 255, 255);
 }
 .arrow-right {
     width: 7.5%;
@@ -284,7 +288,17 @@ border: 2px solid rgb(255, 255, 255);
     width: 100%;
     object-fit: cover;
 }
-
+.display-text a {
+    cursor: pointer;
+    color: black;
+    padding: 0.75vw;
+    font-family: caviar_dreams;
+    background: #eceb75;
+    font-size: 1vw;
+    position: absolute;
+    top: 25vh;
+    right: -15vw;
+}
 .image-background-contact {
     background-image: url('ressources/contact.jpg');
     display: flex;
@@ -317,7 +331,6 @@ border: 2px solid rgb(255, 255, 255);
     font-family: serif;
     font-size: 1.5vw;
     caret-color: transparent;
-
 }
 .display-form textarea {
     height: 15vh;
@@ -328,7 +341,6 @@ border: 2px solid rgb(255, 255, 255);
     font-family: serif;
     font-size: 1.5vw;
     caret-color: transparent;
-
 }
 .display-input-submit {
     width: 98%;

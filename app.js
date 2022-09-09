@@ -6,7 +6,6 @@ const handleNavPos3Text = document.querySelectorAll('a')[2]
 // Gestion affiche du menu sur la page d'accueil
 let observerImageBackgroundHome = new IntersectionObserver(
     function (entries) {
-        /*         console.log('Home', entries[0].isIntersecting) */
         if (entries[0].isIntersecting) {
             handleNavPos1Text.textContent = 'À propos'
             document.querySelector('.presentation').href = '#presentation'
@@ -27,7 +26,6 @@ observerImageBackgroundHome.observe(imageBackgroundHome)
 // Gestion affiche du menu sur la page de présentation (À propos)
 let observerImageBackgroundPresentation = new IntersectionObserver(
     function (entries) {
-        /*         console.log('Presentation', entries[0].isIntersecting) */
         if (entries[0].isIntersecting) {
             handleNavPos1Text.textContent = 'Accueil'
             document.querySelector('.presentation').href = '#home'
@@ -50,7 +48,6 @@ observerImageBackgroundPresentation.observe(imageBackgroundPresentation)
 // Gestion affiche du menu sur la page projets
 let observerImageBackgroundProjects = new IntersectionObserver(
     function (entries) {
-        /*         console.log('Projects', entries[0].isIntersecting) */
         if (entries[0].isIntersecting) {
             handleNavPos1Text.textContent = 'Accueil'
             document.querySelector('.presentation').href = '#home'
@@ -74,7 +71,6 @@ observerImageBackgroundProjects.observe(imageBackgroundProjects)
 // Gestion affiche du menu sur la page contact
 let observerImageBackgroundContact = new IntersectionObserver(
     function (entries) {
-        /*         console.log('Contact', entries[0].isIntersecting) */
         if (entries[0].isIntersecting) {
             handleNavPos1Text.textContent = 'Accueil'
             document.querySelector('.presentation').href = '#home'
@@ -93,8 +89,31 @@ let imageBackgroundContact = document.querySelector('.image-background-contact')
 /* image1.classList.add('not-visible') */
 observerImageBackgroundContact.observe(imageBackgroundContact)
 
-// Gestion de la page projets
+// Gestion de la page presentation
 
+//**Appartition du texte lettre par lettre */
+const text = [...document.getElementsByTagName('h1')]
+console.log(text[0].innerText)
+
+for (let m = 0; m < text.length; m++) {
+    let wrapTextSpan =
+        '<span>' +
+        text[m].innerText.split(' ').join('</span><span> ') +
+        '<span>'
+    console.log(wrapTextSpan)
+    document.querySelectorAll('h1')[m].innerHTML = wrapTextSpan
+}
+const allSpanText = document.querySelectorAll('span')
+console.log(allSpanText)
+
+for (let k = 0; k < allSpanText.length; k++)
+    (function (k) {
+        setTimeout(function () {
+            allSpanText[k].style.opacity = 1
+        }, 300 * (k + 1))
+    })(k)
+
+// Gestion de la page projets
 const arrayProjects = [
     { name: 'Booki', imageUrl: './ressources/projects/BookiDesktop.png' },
     {
@@ -140,14 +159,12 @@ const clickRight = document.querySelector('.arrow-right')
 clickRight.addEventListener('click', handleClickRight)
 let hoverRight = document.querySelector('.display-project-0')
 hoverRight.addEventListener('mouseover', handleClickRight)
-console.log(hoverRight)
 
 let numberProjectLeft = 0
 let numberProjectMiddle = 1
 let numberProjectRight = 2
 
 function handleClickRight(goToRight, hoverRight) {
-    console.log(hoverRight)
     hoverRight = document.querySelector('.display-project-0')
 
     if (numberProjectLeft == 0) {
@@ -167,7 +184,6 @@ function handleClickRight(goToRight, hoverRight) {
     } else {
         numberProjectRight--
     }
-    console.log(hoverRight)
 
     hoverRight = document.querySelector('.display-project-0')
 
@@ -206,8 +222,6 @@ function handleClickRight(goToRight, hoverRight) {
         parentDiv.insertBefore(displayNewProjectFromLeft, middleProject)
     }
     hoverRight = document.querySelector('.display-project-0')
-
-    console.log(hoverRight)
 }
 // Animation du slide des projets vers la gauche
 
@@ -268,5 +282,4 @@ function handleClickLeft(goToLeft) {
         //****Insertion de la div en dernière postition */
         DisplayProjects.appendChild(displayNewProjectFromRight)
     }
-    console.log(hoverLeft)
 }
