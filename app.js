@@ -157,8 +157,9 @@ for (let i = 0; i < 3; i++) {
 // Animation du slide des projets vers la droite
 const clickRight = document.querySelector('.arrow-right')
 clickRight.addEventListener('click', handleClickRight)
-let hoverRight = document.querySelector('.display-project-0')
-hoverRight.addEventListener('mouseover', handleClickRight)
+
+/* let hoverRight = document.querySelector('.display-project-0')
+hoverRight.addEventListener('mouseover', handleClickRight) */
 
 let numberProjectLeft = 0
 let numberProjectMiddle = 1
@@ -227,8 +228,9 @@ function handleClickRight(goToRight, hoverRight) {
 
 const clickLeft = document.querySelector('.arrow-left')
 clickLeft.addEventListener('click', handleClickLeft)
-const hoverLeft = document.querySelector('#project-2')
-hoverLeft.addEventListener('mouseover', handleClickLeft)
+
+/* const hoverLeft = document.querySelector('#project-2')
+hoverLeft.addEventListener('mouseover', handleClickLeft) */
 
 function handleClickLeft(goToLeft) {
     goToLeft.preventDefault()
