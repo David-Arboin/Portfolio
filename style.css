@@ -51,13 +51,6 @@ body {
         transform: rotate(360deg);
     }
 }
-.spinner-img {
-    width: 64px;
-    height: 64px;
-    border: 8px solid;
-    border-color: #f1962d transparent #f13d3d transparent;
-    border-radius: 50%;
-}
 .display-backgrounds {
     display: flex;
     justify-content: center;

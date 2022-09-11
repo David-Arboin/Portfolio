@@ -281,17 +281,14 @@ function handleClickRight(goToRight, hoverRight) {
         )
         //****Création du projet de gauche avec ses propriétés */
         const displayNewProjectFromLeft = document.createElement('a')
-        displayNewProjectFromLeft.classList.add(
-            'display-project-0',
-            'spinner-img'
-        )
+        displayNewProjectFromLeft.classList.add('display-project-0')
         displayNewProjectFromLeft.setAttribute(
             'href',
             `${arrayProjects[numberProjectLeft].lien}`
         )
         const imgProjectNewProjectFromLeft = document.createElement('img')
         imgProjectNewProjectFromLeft.addEventListener('load', () => {
-            displayNewProjectFromLeft.classList.remove('spinner-img')
+            console.log('Image chargée')
         })
         imgProjectNewProjectFromLeft.src = `${arrayProjects[numberProjectLeft].imageUrl}`
         imgProjectNewProjectFromLeft.setAttribute(
