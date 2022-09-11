@@ -1,3 +1,15 @@
+const loaderContainer = document.querySelector('.loader-container')
+window.addEventListener('load', () => {
+    loaderContainer.style.display = 'none'
+})
+
+const displayLoading = () => {
+    loaderContainer.style.display = 'block'
+}
+
+const hideLoading = () => {
+    loaderContainer.style.display = 'none'
+}
 // Gestion de l'affichage du menu
 const handleNavPos1Text = document.querySelectorAll('a')[0]
 const handleNavPos2Text = document.querySelectorAll('a')[1]
@@ -12,6 +24,7 @@ let observerImageBackgroundHome = new IntersectionObserver(
             handleNavPos2Text.textContent = 'Projets'
             document.querySelector('.projects').href = '#projects'
             handleNavPos3Text.textContent = 'Contact'
+            document.querySelector('.display-text').style.opacity = 0
         }
     },
     {
@@ -20,7 +33,6 @@ let observerImageBackgroundHome = new IntersectionObserver(
 )
 
 let imageBackgroundHome = document.querySelector('.image-background-home')
-/* imageBackgroundHome.classList.add('not-visible') */
 observerImageBackgroundHome.observe(imageBackgroundHome)
 
 // Gestion affiche du menu sur la page de présentation (À propos)
@@ -32,6 +44,28 @@ let observerImageBackgroundPresentation = new IntersectionObserver(
             handleNavPos2Text.textContent = 'Projets'
             document.querySelector('.projects').href = '#projects'
             handleNavPos3Text.textContent = 'Contact'
+
+            // Gestion de la page presentation
+
+            //**Appartition du texte lettre par lettre */
+            const text = [...document.getElementsByTagName('h1')]
+            document.querySelector('.display-text').style.opacity = 1
+
+            for (let m = 0; m < text.length; m++) {
+                let wrapTextSpan =
+                    '<span>' +
+                    text[m].innerText.split(' ').join('</span><span> ') +
+                    '<span>'
+                document.querySelectorAll('h1')[m].innerHTML = wrapTextSpan
+            }
+            const allSpanText = document.querySelectorAll('span')
+
+            for (let k = 0; k < allSpanText.length; k++)
+                (function (k) {
+                    setTimeout(function () {
+                        allSpanText[k].style.opacity = 1
+                    }, 300 * (k + 1))
+                })(k)
         }
     },
     {
@@ -42,7 +76,6 @@ let observerImageBackgroundPresentation = new IntersectionObserver(
 let imageBackgroundPresentation = document.querySelector(
     '.image-background-presentation'
 )
-/* image1.classList.add('not-visible') */
 observerImageBackgroundPresentation.observe(imageBackgroundPresentation)
 
 // Gestion affiche du menu sur la page projets
@@ -89,72 +122,111 @@ let imageBackgroundContact = document.querySelector('.image-background-contact')
 /* image1.classList.add('not-visible') */
 observerImageBackgroundContact.observe(imageBackgroundContact)
 
-// Gestion de la page presentation
-
-//**Appartition du texte lettre par lettre */
-const text = [...document.getElementsByTagName('h1')]
-console.log(text[0].innerText)
-
-for (let m = 0; m < text.length; m++) {
-    let wrapTextSpan =
-        '<span>' +
-        text[m].innerText.split(' ').join('</span><span> ') +
-        '<span>'
-    console.log(wrapTextSpan)
-    document.querySelectorAll('h1')[m].innerHTML = wrapTextSpan
-}
-const allSpanText = document.querySelectorAll('span')
-console.log(allSpanText)
-
-for (let k = 0; k < allSpanText.length; k++)
-    (function (k) {
-        setTimeout(function () {
-            allSpanText[k].style.opacity = 1
-        }, 300 * (k + 1))
-    })(k)
-
 // Gestion de la page projets
 const arrayProjects = [
-    { name: 'Booki', imageUrl: './ressources/projects/BookiDesktop.png' },
     {
-        name: 'Groupomania',
-        imageUrl: './ressources/projects/GroupomaniaDesktop.png',
-    },
-    {
-        name: 'Piiquante',
-        imageUrl: './ressources/projects/PiiquanteDesktop.png',
-    },
-    {
-        name: 'Kanap',
-        imageUrl: './ressources/projects/KanapDesktop.png',
-    },
-    {
-        name: 'LaPanthere',
-        imageUrl: './ressources/projects/LaPanthereDesktop.png',
-    },
-    {
+        id: 1,
         name: 'ohmyfood',
         imageUrl: './ressources/projects/OhMyFoodDesktop.png',
+        lien: 'https://david-arboin.github.io/ohmyfood/',
+    },
+    {
+        id: 2,
+        name: 'Groupomania',
+        imageUrl: './ressources/projects/GroupomaniaDesktop.png',
+        lien: 'https://reseau-social-d-entreprise.herokuapp.com/loginPage',
+    },
+    {
+        id: 3,
+        name: 'Guitarsss (en construction)',
+        imageUrl: './ressources/projects/guitarsss.png',
+        lien: 'https://guitarsss.herokuapp.com/',
+    },
+    {
+        id: 4,
+        name: 'Booki',
+        imageUrl: './ressources/projects/BookiDesktop.png',
+        lien: 'https://david-arboin.github.io/Booki/',
+    },
+    {
+        id: 5,
+        name: 'IMC',
+        imageUrl: './ressources/projects/ImcMiniApp.png',
+        lien: 'https://david-arboin.github.io/IMC/',
+    },
+    {
+        id: 6,
+        name: 'Quizz',
+        imageUrl: './ressources/projects/QuizzMiniApp.png',
+        lien: 'https://david-arboin.github.io/Quizz/',
+    },
+    {
+        id: 7,
+        name: 'Cookies',
+        imageUrl: './ressources/projects/CookiesApp.png',
+        lien: 'https://david-arboin.github.io/Cookies/',
+    },
+    {
+        id: 8,
+        name: 'Kanap',
+        imageUrl: './ressources/projects/KanapDesktop.png',
+        lien: 'https://david-arboin.github.io/Kanap-front/html/index.html',
+    },
+    {
+        id: 9,
+        name: 'LaPanthere',
+        imageUrl: './ressources/projects/LaPanthereDesktop.png',
+        lien: 'https://david-arboin.github.io/La_Panthere/',
     },
 ]
 
-//***Affichage des projets
+// Affichage des projets
 const DisplayProjects = document.querySelector('.display-projects')
 
-for (let i = 0; i < 3; i++) {
-    const newProject = document.createElement('div')
-    newProject.classList.add(`display-project-${i}`)
-    newProject.setAttribute('id', `project-${i}`)
+// Affichage du du projet de droite
+const projectLeft = document.createElement('div')
+projectLeft.classList.add('display-project-0')
 
-    const imgProject = document.createElement('img')
-    imgProject.src = `${arrayProjects[i].imageUrl}`
-    imgProject.classList.add('display-image-project')
+const imgProjectLeft = document.createElement('img')
+imgProjectLeft.src = `${arrayProjects[0].imageUrl}`
+imgProjectLeft.setAttribute(
+    'alt',
+    "Lien vers l'application " + `${arrayProjects[0].name}`
+)
 
-    newProject.appendChild(imgProject)
-    DisplayProjects.appendChild(newProject)
-}
+projectLeft.appendChild(imgProjectLeft)
+DisplayProjects.appendChild(projectLeft)
 
-// Animation du slide des projets vers la droite
+// Affichae du du projet du milieu
+const projectMiddle = document.createElement('a')
+projectMiddle.classList.add('display-project-1')
+projectMiddle.setAttribute('href', `${arrayProjects[1].lien}`)
+
+const imgProjectMiddle = document.createElement('img')
+imgProjectMiddle.src = `${arrayProjects[1].imageUrl}`
+imgProjectMiddle.setAttribute(
+    'alt',
+    "Lien vers l'application " + `${arrayProjects[1].name}`
+)
+
+projectMiddle.appendChild(imgProjectMiddle)
+DisplayProjects.appendChild(projectMiddle)
+
+// Affichage du du projet de droite
+const projectRight = document.createElement('div')
+projectRight.classList.add('display-project-2')
+
+const imgProjectRight = document.createElement('img')
+imgProjectRight.src = `${arrayProjects[2].imageUrl}`
+imgProjectRight.setAttribute(
+    'alt',
+    "Lien vers l'application " + `${arrayProjects[2].name}`
+)
+
+projectRight.appendChild(imgProjectRight)
+DisplayProjects.appendChild(projectRight)
+
+// Gestion du slide des projets vers la droite
 const clickRight = document.querySelector('.arrow-right')
 clickRight.addEventListener('click', handleClickRight)
 
@@ -208,10 +280,25 @@ function handleClickRight(goToRight, hoverRight) {
             'display-project-1'
         )
         //****Création du projet de gauche avec ses propriétés */
-        const displayNewProjectFromLeft = document.createElement('div')
-        displayNewProjectFromLeft.classList.add('display-project-0')
+        const displayNewProjectFromLeft = document.createElement('a')
+        displayNewProjectFromLeft.classList.add(
+            'display-project-0',
+            'spinner-img'
+        )
+        displayNewProjectFromLeft.setAttribute(
+            'href',
+            `${arrayProjects[numberProjectLeft].lien}`
+        )
         const imgProjectNewProjectFromLeft = document.createElement('img')
+        imgProjectNewProjectFromLeft.addEventListener('load', () => {
+            displayNewProjectFromLeft.classList.remove('spinner-img')
+        })
         imgProjectNewProjectFromLeft.src = `${arrayProjects[numberProjectLeft].imageUrl}`
+        imgProjectNewProjectFromLeft.setAttribute(
+            'alt',
+            "Lien vers l'application " +
+                `${arrayProjects[numberProjectLeft].name}`
+        )
         imgProjectNewProjectFromLeft.classList.add('display-image-project')
         displayNewProjectFromLeft.appendChild(imgProjectNewProjectFromLeft)
 
@@ -221,6 +308,7 @@ function handleClickRight(goToRight, hoverRight) {
             document.querySelector('.display-project-1').parentNode
         const middleProject = document.querySelector('.display-project-1')
         parentDiv.insertBefore(displayNewProjectFromLeft, middleProject)
+        document.querySelector('.loader-container').style.display = 'none'
     }
     hoverRight = document.querySelector('.display-project-0')
 }
@@ -273,10 +361,20 @@ function handleClickLeft(goToLeft) {
             'display-project-1'
         )
         //****Création de la div */
-        const displayNewProjectFromRight = document.createElement('div')
+        const displayNewProjectFromRight = document.createElement('a')
         displayNewProjectFromRight.classList.add('display-project-2')
+        displayNewProjectFromRight.setAttribute(
+            'href',
+            `${arrayProjects[numberProjectRight].lien}`
+        )
+
         const imgProjectNewProjectFromRight = document.createElement('img')
         imgProjectNewProjectFromRight.src = `${arrayProjects[numberProjectRight].imageUrl}`
+        imgProjectNewProjectFromRight.setAttribute(
+            'alt',
+            "Lien vers l'application " +
+                `${arrayProjects[numberProjectRight].name}`
+        )
 
         imgProjectNewProjectFromRight.classList.add('display-image-project')
         displayNewProjectFromRight.appendChild(imgProjectNewProjectFromRight)
