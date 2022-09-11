@@ -2,14 +2,6 @@ const loaderContainer = document.querySelector('.loader-container')
 window.addEventListener('load', () => {
     loaderContainer.style.display = 'none'
 })
-
-const displayLoading = () => {
-    loaderContainer.style.display = 'block'
-}
-
-const hideLoading = () => {
-    loaderContainer.style.display = 'none'
-}
 // Gestion de l'affichage du menu
 const handleNavPos1Text = document.querySelectorAll('a')[0]
 const handleNavPos2Text = document.querySelectorAll('a')[1]
@@ -272,12 +264,33 @@ function handleClickRight(goToRight, hoverRight) {
             'display-project-1',
             'display-project-2'
         )
-
+        displayProjectMiddle.animate(
+            [
+                // étapes/keyframes
+                { transform: 'translateX(-10vw)', width: '60%' },
+                { width: '30%' },
+            ],
+            {
+                // temporisation
+                duration: 1000,
+            }
+        )
         // Décalage du projet de gauche au centre avec les propriétés de celui du centre
         const displayProjectLeft = document.querySelector('.display-project-0')
         displayProjectLeft.classList.replace(
             'display-project-0',
             'display-project-1'
+        )
+        displayProjectLeft.animate(
+            [
+                // étapes/keyframes
+                { transform: 'translateX(-10vw)', width: '30%' },
+                { width: '60%' },
+            ],
+            {
+                // temporisation
+                duration: 1000,
+            }
         )
         //****Création du projet de gauche avec ses propriétés */
         const displayNewProjectFromLeft = document.createElement('a')
@@ -305,7 +318,17 @@ function handleClickRight(goToRight, hoverRight) {
             document.querySelector('.display-project-1').parentNode
         const middleProject = document.querySelector('.display-project-1')
         parentDiv.insertBefore(displayNewProjectFromLeft, middleProject)
-        document.querySelector('.loader-container').style.display = 'none'
+        displayNewProjectFromLeft.animate(
+            [
+                // étapes/keyframes
+                { transform: 'translateX(-50vw)', width: '0' },
+                { width: '30%' },
+            ],
+            {
+                // temporisation
+                duration: 1000,
+            }
+        )
     }
     hoverRight = document.querySelector('.display-project-0')
 }
@@ -350,12 +373,33 @@ function handleClickLeft(goToLeft) {
             'display-project-1',
             'display-project-0'
         )
-
+        displayProjectMiddle.animate(
+            [
+                // étapes/keyframes
+                { transform: 'translateX(10vw)', width: '60%' },
+                { width: '30%' },
+            ],
+            {
+                // temporisation
+                duration: 1000,
+            }
+        )
         // Décalage du projet de droite au centre avec les propriétés de celui du centre
         const displayProjectRight = document.querySelector('.display-project-2')
         displayProjectRight.classList.replace(
             'display-project-2',
             'display-project-1'
+        )
+        displayProjectRight.animate(
+            [
+                // étapes/keyframes
+                { transform: 'translateX(10vw)', width: '30%' },
+                { width: '60%' },
+            ],
+            {
+                // temporisation
+                duration: 1000,
+            }
         )
         //****Création de la div */
         const displayNewProjectFromRight = document.createElement('a')
@@ -378,5 +422,16 @@ function handleClickLeft(goToLeft) {
 
         //****Insertion de la div en dernière postition */
         DisplayProjects.appendChild(displayNewProjectFromRight)
+        displayNewProjectFromRight.animate(
+            [
+                // étapes/keyframes
+                { transform: 'translateX(10vw)', width: '0' },
+                { width: '30%' },
+            ],
+            {
+                // temporisation
+                duration: 1000,
+            }
+        )
     }
 }
